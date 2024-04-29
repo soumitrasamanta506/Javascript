@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+<body>
+    <div>
+        <ul id="image">
+            <li><img src="img/asset 4.png" alt="" id="li2"></li>
+            <li><img src="img/asset 3.png" alt="" id="li1"></li>
+            <li><img src="img/asset 5.png" alt="" id="li3"></li>
+            <li><img src="img/asset 6.png" alt="" id="li4"></li>
+            <li><img src="img/asset 7.png" alt="" id="li5"></li>
+            <li><a href="https://google.com" id="google">google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    document.querySelector("#li1").addEventListener('click', function(e){
+        console.log('li1 clicked');
+        console.log(e);
+        e.stopPropagation();
+    }, false)    /* last argument for propagation -- default value is false. false for bubble propagation. true for capture propagation*/
+    document.querySelector('#image').addEventListener('click', function(e) {
+        console.log('image clicked');
+    }, false)
+
+    document.querySelector('#google').addEventListener('click', function(e){
+        console.log('clicked url');
+        e.preventDefault()
+    })
+    /*
+    document.querySelector('#image').addEventListener('click', function(e){
+        // console.log(e.target.parentNode);
+        console.log(e.target.tagName)
+        const tag_name = e.target.tagName
+        if(tag_name === 'IMG'){
+            const removeElt = e.target.parentNode
+            removeElt.remove();
+        }
+        else{
+            const removeElt = e.target
+            removeElt.remove();
+        }
+    }, false)
+    */
+
+    //    for scroll event
+    window.addEventListener('scroll', (e)=>{
+        console.log('scroll occured')
+    })
+
+    /*
+    let condition = false
+    if(condition){
+        // these event listener will be attach when the condition is true;
+        document.querySelector('#google').addEventListener('mouseover', function (e){
+            console.log('hover');
+        })
+    }
+    */
+</script>
+</html>
